@@ -1,0 +1,10 @@
+{
+	"records": [
+		{
+			"key": "tfplan-functions",
+			"source": "./tfplan-functions.sentinel",
+			"sourceSum": "",
+			"dest": "/home/rajeevghosh/WELLS-PHASE3/07June22-cloud-composer/cloud-composer-sentinel/tfplan-functions.sentinel"
+		}
+	]
+}

@@ -3,7 +3,7 @@ provider "google" {
 
   access_token = var.access_token
   project = "sublime-lyceum-343813"
-  credentials = file("../composer-sa.json")
+  #credentials = file("../composer-sa.json")
 
 }
 resource "google_composer_environment" "test" {

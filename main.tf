@@ -2,7 +2,7 @@
 provider "google" {
 
   access_token = var.access_token
-  project = "sublime-lyceum-343813"
+  project      = "sublime-lyceum-343813"
   #credentials = file("../composer-sa.json")
 
 }

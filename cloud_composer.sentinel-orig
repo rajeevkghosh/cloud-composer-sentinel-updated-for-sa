@@ -1,0 +1,135 @@
+# Import common-functions/tfplan-functions/tfplan-functions.sentinel
+# with alias "plan"
+import "tfplan-functions" as plan
+import "strings"
+import "types"
+
+# Get all Composer Instances
+allComposerInstances = plan.find_resources("google_composer_environment")
+
+############################################################################################
+############################# GCP_COMPOSER_PRIVATE #########################################
+############################################################################################
+
+violations_endpoint = {}
+for allComposerInstances as address, rc {
+	composer_private = plan.evaluate_attribute(rc, "config.0.private_environment_config.0.enable_private_endpoint")
+	print(composer_private)
+	is_undefined = rule { types.type_of(composer_private) is "undefined" or types.type_of(composer_private) is "null" }
+
+	print(is_undefined)
+
+	if is_undefined {
+		violations_endpoint[address] = rc
+		print("The value for private_environment_config in Resource " + address + " can't be null")
+	} else {
+		if not composer_private == true {
+			violations_endpoint[address] = rc
+			print("The value for private_environment_config in Resource " + address + " must be true")
+		}
+	}
+}
+
+GCP_COMPOSER_PRIVATE = rule { length(violations_endpoint) is 0 }
+
+############################################################################################
+############################# GCP_COMPOSER_ENV_VERSION #####################################
+############################################################################################
+
+violations_env_version = {}
+for allComposerInstances as address, rc {
+	composer_env_version = plan.evaluate_attribute(rc, "config.0.software_config.0.image_version")
+	print(composer_env_version)
+	is_env_version_undefined = rule {
+		types.type_of(composer_env_version) is "undefined" or types.type_of(composer_env_version) is "null"
+	}
+
+	print(is_env_version_undefined)
+
+	if is_env_version_undefined {
+		violations_env_version[address] = rc
+		print("The value for image version in Resource " + address + " can't be null")
+	} else {
+		if not strings.has_prefix(composer_env_version, "composer-2") {
+			violations_env_version[address] = rc
+			print("The value for image version in Resource " + address + " can only start with composer-2")
+		}
+
+	}
+}
+
+GCP_COMPOSER_ENV_VERSION = rule { length(violations_env_version) is 0 }
+
+############################################################################################
+############################# GCP_COMPOSER_CMEK ############################################
+############################################################################################
+
+violations_cmek = {}
+for allComposerInstances as address, rc {
+	composer_cmek = plan.evaluate_attribute(rc, "config.0.encryption_config.0.kms_key_name")
+	print(composer_cmek)
+	is_cmek_undefined = rule { types.type_of(composer_cmek) is "undefined" or types.type_of(composer_cmek) is "null" }
+
+	print(is_cmek_undefined)
+
+	if is_cmek_undefined {
+		violations_cmek[address] = rc
+		print("The value for kms_key_name in Resource " + address + " can't be null")
+	} else {
+
+		kms_project = strings.split(composer_cmek, "/")[0]
+		kms_locations = strings.split(composer_cmek, "/")[2]
+		kms_keyrings = strings.split(composer_cmek, "/")[4]
+		kms_cryptokeys = strings.split(composer_cmek, "/")[6]
+		print(kms_project)
+		print(kms_locations)
+		print(kms_keyrings)
+		print(kms_cryptokeys)
+
+		if not (kms_project == "projects" and kms_locations == "locations" and kms_keyrings == "keyRings" and kms_cryptokeys == "cryptoKeys") {
+
+			print("This is not a valid URI for KMS CMEK Key.")
+			print("The KMS CMEK URI should be in the format of projects/{projectId}/locations/{location}/keyRings/{keyRingName}/cryptoKeys/{cryptoKeyName}")
+			violations_cmek[address] = rc
+		}
+
+	}
+
+}
+
+GCP_COMPOSER_CMEK = rule { length(violations_cmek) is 0 }
+
+############################################################################################
+############################# GCP_COMPOSER_RBAC ############################################
+############################################################################################
+
+violations_rbac = {}
+for allComposerInstances as address, rc {
+	composer_rbac = plan.evaluate_attribute(rc, "config.0.software_config.0.airflow_config_overrides")
+	print(composer_rbac)
+	is_rbac_undefined = rule {
+		types.type_of(composer_rbac) is "undefined" or types.type_of(composer_rbac) is "null"
+	}
+
+	print(is_rbac_undefined)
+
+	if is_rbac_undefined {
+		violations_rbac[address] = rc
+		print("The value for airflow_config_overrides in Resource " + address + " can't be null")
+
+	} else {
+
+		for composer_rbac as lp, rt {
+			print(lp)
+
+			if not (lp == "webserver-rbac_user_registration_role") {
+                violations_rbac[address] = rc
+				print("airflow_config_overrides value must be webserver-rbac_user_registration_role in resource " + address)
+			}
+		}
+	}
+}
+
+GCP_COMPOSER_RBAC = rule { length(violations_rbac) is 0 }
+
+main = rule { GCP_COMPOSER_PRIVATE and GCP_COMPOSER_ENV_VERSION and GCP_COMPOSER_CMEK and GCP_COMPOSER_RBAC }

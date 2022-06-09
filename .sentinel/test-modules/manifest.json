@@ -1,30 +1,6 @@
 {
 	"records": [
 		{
-			"key": "test/cloud_composer/composer-cmek-pass/tfplan-functions",
-			"source": "../../tfplan-functions.sentinel",
-			"sourceSum": "",
-			"dest": "/home/rajeevghosh/WELLS-PHASE3/07June22-cloud-composer/cloud-composer-sentinel/tfplan-functions.sentinel"
-		},
-		{
-			"key": "test/cloud_composer/composer-rbac-fail/tfplan-functions",
-			"source": "../../tfplan-functions.sentinel",
-			"sourceSum": "",
-			"dest": "/home/rajeevghosh/WELLS-PHASE3/07June22-cloud-composer/cloud-composer-sentinel/tfplan-functions.sentinel"
-		},
-		{
-			"key": "test/cloud_composer/composer-env-version-pass/tfplan-functions",
-			"source": "../../tfplan-functions.sentinel",
-			"sourceSum": "",
-			"dest": "/home/rajeevghosh/WELLS-PHASE3/07June22-cloud-composer/cloud-composer-sentinel/tfplan-functions.sentinel"
-		},
-		{
-			"key": "test/cloud_composer/composer-cmek-fail/tfplan-functions",
-			"source": "../../tfplan-functions.sentinel",
-			"sourceSum": "",
-			"dest": "/home/rajeevghosh/WELLS-PHASE3/07June22-cloud-composer/cloud-composer-sentinel/tfplan-functions.sentinel"
-		},
-		{
 			"key": "test/cloud_composer/composer-private-pass/tfplan-functions",
 			"source": "../../tfplan-functions.sentinel",
 			"sourceSum": "",
@@ -44,6 +20,30 @@
 		},
 		{
 			"key": "test/cloud_composer/composer-rbac-pass/tfplan-functions",
+			"source": "../../tfplan-functions.sentinel",
+			"sourceSum": "",
+			"dest": "/home/rajeevghosh/WELLS-PHASE3/07June22-cloud-composer/cloud-composer-sentinel/tfplan-functions.sentinel"
+		},
+		{
+			"key": "test/cloud_composer/composer-cmek-pass/tfplan-functions",
+			"source": "../../tfplan-functions.sentinel",
+			"sourceSum": "",
+			"dest": "/home/rajeevghosh/WELLS-PHASE3/07June22-cloud-composer/cloud-composer-sentinel/tfplan-functions.sentinel"
+		},
+		{
+			"key": "test/cloud_composer/composer-rbac-fail/tfplan-functions",
+			"source": "../../tfplan-functions.sentinel",
+			"sourceSum": "",
+			"dest": "/home/rajeevghosh/WELLS-PHASE3/07June22-cloud-composer/cloud-composer-sentinel/tfplan-functions.sentinel"
+		},
+		{
+			"key": "test/cloud_composer/composer-env-version-pass/tfplan-functions",
+			"source": "../../tfplan-functions.sentinel",
+			"sourceSum": "",
+			"dest": "/home/rajeevghosh/WELLS-PHASE3/07June22-cloud-composer/cloud-composer-sentinel/tfplan-functions.sentinel"
+		},
+		{
+			"key": "test/cloud_composer/composer-cmek-fail/tfplan-functions",
 			"source": "../../tfplan-functions.sentinel",
 			"sourceSum": "",
 			"dest": "/home/rajeevghosh/WELLS-PHASE3/07June22-cloud-composer/cloud-composer-sentinel/tfplan-functions.sentinel"

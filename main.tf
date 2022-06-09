@@ -6,10 +6,17 @@ provider "google" {
   #credentials = file("../composer-sa.json")
 
 }
+
+provider "google-beta" {
+
+  access_token = var.access_token
+  project     = "sublime-lyceum-343813"
+}
 resource "google_composer_environment" "test" {
   name   = "wf-us-dev-cmp-app01-res123"
   region = "us-central1"
   provider = google-beta
+  
 
   config {
     software_config {

@@ -1,0 +1,43 @@
+id = "run-ecjbo3iYj3xUujd5"
+created_at = "2022-06-09T13:04:02.199Z"
+message = "Triggered via UI"
+commit_sha = "a60269af13e5b34a8fce9e5e548e29e4e93c8cab"
+speculative = false
+is_destroy = false
+refresh = true
+refresh_only = false
+replace_addrs = null
+target_addrs = null
+
+variables = {
+	"access_token": {
+		"category":  "terraform",
+		"sensitive": true,
+	},
+}
+
+organization = {
+	"name": "Wells-Phase3",
+}
+
+workspace = {
+	"auto_apply":  false,
+	"created_at":  "2022-06-07T09:57:43.362Z",
+	"description": null,
+	"id":          "ws-GWebLGxmnw8j6Np3",
+	"name":        "rajeev-cloud-composer-sentinel",
+	"tags":        [],
+	"vcs_repo": {
+		"branch":             "",
+		"display_identifier": "rajeevkghosh/cloud-composer-sentinel",
+		"identifier":         "rajeevkghosh/cloud-composer-sentinel",
+		"ingress_submodules": false,
+	},
+	"working_directory": "",
+}
+
+cost_estimate = {
+	"delta_monthly_cost":    "0.0",
+	"prior_monthly_cost":    "0.0",
+	"proposed_monthly_cost": "0.0",
+}

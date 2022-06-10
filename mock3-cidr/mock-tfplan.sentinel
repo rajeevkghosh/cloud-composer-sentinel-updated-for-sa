@@ -1,0 +1,329 @@
+import "strings"
+import "types"
+
+_modules = {
+	"root": {
+		"data": {},
+		"path": [],
+		"resources": {
+			"google_composer_environment": {
+				"test": {
+					0: {
+						"applied": {
+							"config": [
+								{
+									"encryption_config": [
+										{
+											"kms_key_name": "projects/sublime-lyceum-343813/locations/us-central1/keyRings/keyring-1/cryptoKeys/cryptokey-1",
+										},
+									],
+									"master_authorized_networks_config": [
+										{
+											"cidr_blocks": [
+												{
+													"cidr_block":   "10.2.0.0/16",
+													"display_name": "",
+												},
+											],
+											"enabled": true,
+										},
+									],
+									"private_environment_config": [
+										{
+											"enable_private_endpoint": true,
+										},
+									],
+									"software_config": [
+										{
+											"airflow_config_overrides": {
+												"webserver-rbac_user_registration_role": "Viewer",
+											},
+											"env_variables": null,
+											"image_version": "composer-2-airflow-2",
+											"pypi_packages": null,
+										},
+									],
+								},
+							],
+							"labels":   null,
+							"name":     "wf-us-dev-cmp-app01-res123",
+							"region":   "us-central1",
+							"timeouts": null,
+						},
+						"destroy": false,
+						"diff": {
+							"config.#": {
+								"computed": false,
+								"new":      "1",
+								"old":      "",
+							},
+							"config.0.%": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"config.0.airflow_uri": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"config.0.dag_gcs_prefix": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"config.0.database_config": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"config.0.encryption_config.#": {
+								"computed": false,
+								"new":      "1",
+								"old":      "",
+							},
+							"config.0.encryption_config.0.%": {
+								"computed": false,
+								"new":      "1",
+								"old":      "",
+							},
+							"config.0.encryption_config.0.kms_key_name": {
+								"computed": false,
+								"new":      "projects/sublime-lyceum-343813/locations/us-central1/keyRings/keyring-1/cryptoKeys/cryptokey-1",
+								"old":      "",
+							},
+							"config.0.environment_size": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"config.0.gke_cluster": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"config.0.maintenance_window": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"config.0.master_authorized_networks_config.#": {
+								"computed": false,
+								"new":      "1",
+								"old":      "",
+							},
+							"config.0.master_authorized_networks_config.0.%": {
+								"computed": false,
+								"new":      "2",
+								"old":      "",
+							},
+							"config.0.master_authorized_networks_config.0.cidr_blocks.#": {
+								"computed": false,
+								"new":      "1",
+								"old":      "",
+							},
+							"config.0.master_authorized_networks_config.0.cidr_blocks.0.%": {
+								"computed": false,
+								"new":      "2",
+								"old":      "",
+							},
+							"config.0.master_authorized_networks_config.0.cidr_blocks.0.cidr_block": {
+								"computed": false,
+								"new":      "10.2.0.0/16",
+								"old":      "",
+							},
+							"config.0.master_authorized_networks_config.0.cidr_blocks.0.display_name": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"config.0.master_authorized_networks_config.0.enabled": {
+								"computed": false,
+								"new":      "true",
+								"old":      "",
+							},
+							"config.0.node_config": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"config.0.node_count": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"config.0.private_environment_config.#": {
+								"computed": false,
+								"new":      "1",
+								"old":      "",
+							},
+							"config.0.private_environment_config.0.%": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"config.0.private_environment_config.0.cloud_composer_connection_subnetwork": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"config.0.private_environment_config.0.cloud_composer_network_ipv4_cidr_block": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"config.0.private_environment_config.0.cloud_sql_ipv4_cidr_block": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"config.0.private_environment_config.0.enable_private_endpoint": {
+								"computed": false,
+								"new":      "true",
+								"old":      "",
+							},
+							"config.0.private_environment_config.0.enable_privately_used_public_ips": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"config.0.private_environment_config.0.master_ipv4_cidr_block": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"config.0.private_environment_config.0.web_server_ipv4_cidr_block": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"config.0.software_config.#": {
+								"computed": false,
+								"new":      "1",
+								"old":      "",
+							},
+							"config.0.software_config.0.%": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"config.0.software_config.0.airflow_config_overrides.%": {
+								"computed": false,
+								"new":      "1",
+								"old":      "",
+							},
+							"config.0.software_config.0.airflow_config_overrides.webserver-rbac_user_registration_role": {
+								"computed": false,
+								"new":      "Viewer",
+								"old":      "",
+							},
+							"config.0.software_config.0.env_variables": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"config.0.software_config.0.image_version": {
+								"computed": false,
+								"new":      "composer-2-airflow-2",
+								"old":      "",
+							},
+							"config.0.software_config.0.pypi_packages": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"config.0.software_config.0.python_version": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"config.0.software_config.0.scheduler_count": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"config.0.web_server_config": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"config.0.web_server_network_access_control": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"config.0.workloads_config": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"id": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"labels": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"name": {
+								"computed": false,
+								"new":      "wf-us-dev-cmp-app01-res123",
+								"old":      "",
+							},
+							"project": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"region": {
+								"computed": false,
+								"new":      "us-central1",
+								"old":      "",
+							},
+							"timeouts": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+						},
+						"requires_new": false,
+					},
+				},
+			},
+		},
+	},
+}
+
+module_paths = [
+	[],
+]
+
+terraform_version = "1.2.2"
+
+variables = {
+	"access_token": "REDACTED_SENSITIVE",
+}
+
+module = func(path) {
+	if types.type_of(path) is not "list" {
+		error("expected list, got", types.type_of(path))
+	}
+
+	if length(path) < 1 {
+		return _modules.root
+	}
+
+	addr = []
+	for path as p {
+		append(addr, "module")
+		append(addr, p)
+	}
+
+	return _modules[strings.join(addr, ".")]
+}
+
+data = _modules.root.data
+path = _modules.root.path
+resources = _modules.root.resources

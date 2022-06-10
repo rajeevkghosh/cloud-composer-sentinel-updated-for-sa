@@ -1,0 +1,43 @@
+# Import common-functions/tfplan-functions/tfplan-functions.sentinel
+# with alias "plan"
+import "tfplan-functions" as plan
+import "strings"
+import "types"
+
+# Get all Composer Instances
+allComposerInstances = plan.find_resources("google_composer_environment")
+
+############################################################################################
+############################# GCP_COMPOSER_AUTHORIZED_NETWORKS #############################
+############################################################################################
+
+violations_master_auth = {}
+
+for allComposerInstances as address, rc {
+	composer_master_auth = plan.evaluate_attribute(rc.change.after, "config.0.master_authorized_networks_config")
+	//print(composer_master_auth)
+
+	if composer_master_auth == null {
+		violations_master_auth[address] = rc
+		print("The value for private_environment_config in Resource " + address + " can't be null")
+
+	} else {
+
+		is_null_masterauth = rule {
+			length(composer_master_auth) == 0 or types.type_of(composer_master_auth[0]["cidr_blocks"]) is "undefined" or types.type_of(composer_master_auth[0]["cidr_blocks"][0]["cidr_block"]) is "undefined"
+		}
+		print(is_null_masterauth)
+
+		//print(composer_master_auth[0]["cidr_blocks"])
+		//print(composer_master_auth[0]["cidr_blocks"][0]["cidr_block"])
+
+		if is_null_masterauth {
+			violations_master_auth[address] = rc
+			print("The value for private_environment_config in Resource " + address + " can't be null")
+		}
+	}
+}
+
+GCP_COMPOSER_AUTHORIZED_NETWORKS = rule { length(violations_master_auth) is 0 }
+
+main = rule { GCP_COMPOSER_AUTHORIZED_NETWORKS }

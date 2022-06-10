@@ -11,7 +11,7 @@ planned_values = {
 			"mode":           "managed",
 			"module_address": "",
 			"name":           "test",
-			"provider_name":  "registry.terraform.io/hashicorp/google-beta",
+			"provider_name":  "registry.terraform.io/hashicorp/google",
 			"tainted":        false,
 			"type":           "google_composer_environment",
 			"values": {
@@ -20,17 +20,6 @@ planned_values = {
 						"encryption_config": [
 							{
 								"kms_key_name": "projects/sublime-lyceum-343813/locations/us-central1/keyRings/keyring-1/cryptoKeys/cryptokey-1",
-							},
-						],
-						"master_authorized_networks_config": [
-							{
-								"cidr_blocks": [
-									{
-										"cidr_block":   "10.2.0.0/16",
-										"display_name": "",
-									},
-								],
-								"enabled": true,
 							},
 						],
 						"private_environment_config": [
@@ -81,17 +70,6 @@ resource_changes = {
 								"kms_key_name": "projects/sublime-lyceum-343813/locations/us-central1/keyRings/keyring-1/cryptoKeys/cryptokey-1",
 							},
 						],
-						"master_authorized_networks_config": [
-							{
-								"cidr_blocks": [
-									{
-										"cidr_block":   "10.2.0.0/16",
-										"display_name": "",
-									},
-								],
-								"enabled": true,
-							},
-						],
 						"private_environment_config": [
 							{
 								"enable_private_endpoint": true,
@@ -126,21 +104,13 @@ resource_changes = {
 						"environment_size":   true,
 						"gke_cluster":        true,
 						"maintenance_window": true,
-						"master_authorized_networks_config": [
-							{
-								"cidr_blocks": [
-									{},
-								],
-							},
-						],
-						"node_config": true,
-						"node_count":  true,
+						"node_config":        true,
+						"node_count":         true,
 						"private_environment_config": [
 							{
 								"cloud_composer_connection_subnetwork":   true,
 								"cloud_composer_network_ipv4_cidr_block": true,
 								"cloud_sql_ipv4_cidr_block":              true,
-								"enable_privately_used_public_ips":       true,
 								"master_ipv4_cidr_block":                 true,
 								"web_server_ipv4_cidr_block":             true,
 							},
@@ -167,7 +137,7 @@ resource_changes = {
 		"mode":           "managed",
 		"module_address": "",
 		"name":           "test",
-		"provider_name":  "registry.terraform.io/hashicorp/google-beta",
+		"provider_name":  "registry.terraform.io/hashicorp/google",
 		"type":           "google_composer_environment",
 	},
 }
@@ -190,19 +160,6 @@ raw = {
 				},
 				"name": "google",
 			},
-			"google-beta": {
-				"expressions": {
-					"access_token": {
-						"references": [
-							"var.access_token",
-						],
-					},
-					"project": {
-						"constant_value": "sublime-lyceum-343813",
-					},
-				},
-				"name": "google-beta",
-			},
 		},
 		"root_module": {
 			"resources": [
@@ -218,20 +175,6 @@ raw = {
 												"data.google_kms_crypto_key.cryptokey-1.id",
 												"data.google_kms_crypto_key.cryptokey-1",
 											],
-										},
-									},
-								],
-								"master_authorized_networks_config": [
-									{
-										"cidr_blocks": [
-											{
-												"cidr_block": {
-													"constant_value": "10.2.0.0/16",
-												},
-											},
-										],
-										"enabled": {
-											"constant_value": true,
 										},
 									},
 								],
@@ -265,7 +208,7 @@ raw = {
 					},
 					"mode":                "managed",
 					"name":                "test",
-					"provider_config_key": "google-beta",
+					"provider_config_key": "google",
 					"schema_version":      0,
 					"type":                "google_composer_environment",
 				},
@@ -321,7 +264,7 @@ raw = {
 					"address":        "google_composer_environment.test",
 					"mode":           "managed",
 					"name":           "test",
-					"provider_name":  "registry.terraform.io/hashicorp/google-beta",
+					"provider_name":  "registry.terraform.io/hashicorp/google",
 					"schema_version": 0,
 					"sensitive_values": {
 						"config": [
@@ -331,14 +274,7 @@ raw = {
 									{},
 								],
 								"maintenance_window": [],
-								"master_authorized_networks_config": [
-									{
-										"cidr_blocks": [
-											{},
-										],
-									},
-								],
-								"node_config": [],
+								"node_config":        [],
 								"private_environment_config": [
 									{},
 								],
@@ -360,17 +296,6 @@ raw = {
 								"encryption_config": [
 									{
 										"kms_key_name": "projects/sublime-lyceum-343813/locations/us-central1/keyRings/keyring-1/cryptoKeys/cryptokey-1",
-									},
-								],
-								"master_authorized_networks_config": [
-									{
-										"cidr_blocks": [
-											{
-												"cidr_block":   "10.2.0.0/16",
-												"display_name": "",
-											},
-										],
-										"enabled": true,
 									},
 								],
 								"private_environment_config": [
@@ -470,17 +395,6 @@ raw = {
 									"kms_key_name": "projects/sublime-lyceum-343813/locations/us-central1/keyRings/keyring-1/cryptoKeys/cryptokey-1",
 								},
 							],
-							"master_authorized_networks_config": [
-								{
-									"cidr_blocks": [
-										{
-											"cidr_block":   "10.2.0.0/16",
-											"display_name": "",
-										},
-									],
-									"enabled": true,
-								},
-							],
 							"private_environment_config": [
 								{
 									"enable_private_endpoint": true,
@@ -511,14 +425,7 @@ raw = {
 								{},
 							],
 							"maintenance_window": [],
-							"master_authorized_networks_config": [
-								{
-									"cidr_blocks": [
-										{},
-									],
-								},
-							],
-							"node_config": [],
+							"node_config":        [],
 							"private_environment_config": [
 								{},
 							],
@@ -545,21 +452,13 @@ raw = {
 							"environment_size":   true,
 							"gke_cluster":        true,
 							"maintenance_window": true,
-							"master_authorized_networks_config": [
-								{
-									"cidr_blocks": [
-										{},
-									],
-								},
-							],
-							"node_config": true,
-							"node_count":  true,
+							"node_config":        true,
+							"node_count":         true,
 							"private_environment_config": [
 								{
 									"cloud_composer_connection_subnetwork":   true,
 									"cloud_composer_network_ipv4_cidr_block": true,
 									"cloud_sql_ipv4_cidr_block":              true,
-									"enable_privately_used_public_ips":       true,
 									"master_ipv4_cidr_block":                 true,
 									"web_server_ipv4_cidr_block":             true,
 								},
@@ -584,7 +483,7 @@ raw = {
 			},
 			"mode":          "managed",
 			"name":          "test",
-			"provider_name": "registry.terraform.io/hashicorp/google-beta",
+			"provider_name": "registry.terraform.io/hashicorp/google",
 			"type":          "google_composer_environment",
 		},
 	],

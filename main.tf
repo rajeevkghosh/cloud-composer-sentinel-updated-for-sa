@@ -39,9 +39,9 @@ resource "google_composer_environment" "test" {
     master_authorized_networks_config {
 
       enabled = true
-      /*cidr_blocks {
-        cidr_block = "10.2.0.0/16"
-      }*/
+      cidr_blocks {
+        #cidr_block = "10.2.0.0/16"
+      }
     }
   }
 

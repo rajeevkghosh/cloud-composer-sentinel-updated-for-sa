@@ -1,0 +1,196 @@
+import "strings"
+import "types"
+
+_modules = {
+	"root": {
+		"data": {
+			"google_kms_crypto_key": {
+				"cryptokey-1": {
+					"config": {
+						"name": "cryptokey-1",
+					},
+					"provisioners": null,
+					"references": {
+						"key_ring": [
+							"data.google_kms_key_ring.keyring-1.id",
+							"data.google_kms_key_ring.keyring-1",
+						],
+						"name": [],
+					},
+				},
+			},
+			"google_kms_key_ring": {
+				"keyring-1": {
+					"config": {
+						"location": "us-central1",
+						"name":     "keyring-1",
+					},
+					"provisioners": null,
+					"references": {
+						"location": [],
+						"name":     [],
+					},
+				},
+			},
+		},
+		"modules": {},
+		"outputs": {},
+		"providers": {
+			"google": {
+				"alias": {
+					"": {
+						"config": {
+							"project": "sublime-lyceum-343813",
+						},
+						"references": {
+							"access_token": [
+								"var.access_token",
+							],
+							"project": [],
+						},
+						"version": "",
+					},
+				},
+				"config": {
+					"project": "sublime-lyceum-343813",
+				},
+				"references": {
+					"access_token": [
+						"var.access_token",
+					],
+					"project": [],
+				},
+				"version": "",
+			},
+			"google-beta": {
+				"alias": {
+					"": {
+						"config": {
+							"project": "sublime-lyceum-343813",
+						},
+						"references": {
+							"access_token": [
+								"var.access_token",
+							],
+							"project": [],
+						},
+						"version": "",
+					},
+				},
+				"config": {
+					"project": "sublime-lyceum-343813",
+				},
+				"references": {
+					"access_token": [
+						"var.access_token",
+					],
+					"project": [],
+				},
+				"version": "",
+			},
+		},
+		"resources": {
+			"google_composer_environment": {
+				"test": {
+					"config": {
+						"config": [
+							{
+								"encryption_config": [
+									{},
+								],
+								"master_authorized_networks_config": [
+									{
+										"enabled": true,
+									},
+								],
+								"private_environment_config": [
+									{
+										"enable_private_endpoint": true,
+									},
+								],
+								"software_config": [
+									{
+										"airflow_config_overrides": {
+											"webserver-rbac_user_registration_role": "Viewer",
+										},
+										"image_version": "composer-2-airflow-2",
+									},
+								],
+							},
+						],
+						"name":   "wf-us-dev-cmp-app01-res123",
+						"region": "us-central1",
+					},
+					"provisioners": null,
+					"references": {
+						"config": [
+							{
+								"encryption_config": [
+									{
+										"kms_key_name": [
+											"data.google_kms_crypto_key.cryptokey-1.id",
+											"data.google_kms_crypto_key.cryptokey-1",
+										],
+									},
+								],
+								"master_authorized_networks_config": [
+									{
+										"enabled": [],
+									},
+								],
+								"private_environment_config": [
+									{
+										"enable_private_endpoint": [],
+									},
+								],
+								"software_config": [
+									{
+										"airflow_config_overrides": [],
+										"image_version":            [],
+									},
+								],
+							},
+						],
+						"name":   [],
+						"region": [],
+					},
+				},
+			},
+		},
+		"variables": {
+			"access_token": {
+				"default":     null,
+				"description": "access token",
+			},
+		},
+	},
+}
+
+module_paths = [
+	[],
+]
+
+module = func(path) {
+	if types.type_of(path) is not "list" {
+		error("expected list, got", types.type_of(path))
+	}
+
+	if length(path) < 1 {
+		return _modules.root
+	}
+
+	addr = []
+	for path as p {
+		append(addr, "module")
+		append(addr, p)
+	}
+
+	return _modules[strings.join(addr, ".")]
+}
+
+data = _modules.root.data
+modules = _modules.root.modules
+providers = _modules.root.providers
+resources = _modules.root.resources
+variables = _modules.root.variables
+outputs = _modules.root.outputs

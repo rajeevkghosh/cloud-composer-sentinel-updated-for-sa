@@ -22,7 +22,17 @@ planned_values = {
 								"kms_key_name": "projects/sublime-lyceum-343813/locations/us-central1/keyRings/keyring-1/cryptoKeys/cryptokey-1",
 							},
 						],
-						"master_authorized_networks_config": [],
+						"master_authorized_networks_config": [
+							{
+								"cidr_blocks": [
+									{
+										"cidr_block":   "10.2.0.0/16",
+										"display_name": "",
+									},
+								],
+								"enabled": true,
+							},
+						],
 						"private_environment_config": [
 							{
 								"enable_private_endpoint": true,
@@ -71,7 +81,17 @@ resource_changes = {
 								"kms_key_name": "projects/sublime-lyceum-343813/locations/us-central1/keyRings/keyring-1/cryptoKeys/cryptokey-1",
 							},
 						],
-						"master_authorized_networks_config": [],
+						"master_authorized_networks_config": [
+							{
+								"cidr_blocks": [
+									{
+										"cidr_block":   "10.2.0.0/16",
+										"display_name": "",
+									},
+								],
+								"enabled": true,
+							},
+						],
 						"private_environment_config": [
 							{
 								"enable_private_endpoint": true,
@@ -103,12 +123,18 @@ resource_changes = {
 						"encryption_config": [
 							{},
 						],
-						"environment_size":                  true,
-						"gke_cluster":                       true,
-						"maintenance_window":                true,
-						"master_authorized_networks_config": [],
-						"node_config":                       true,
-						"node_count":                        true,
+						"environment_size":   true,
+						"gke_cluster":        true,
+						"maintenance_window": true,
+						"master_authorized_networks_config": [
+							{
+								"cidr_blocks": [
+									{},
+								],
+							},
+						],
+						"node_config": true,
+						"node_count":  true,
 						"private_environment_config": [
 							{
 								"cloud_composer_connection_subnetwork":   true,
@@ -192,6 +218,20 @@ raw = {
 												"data.google_kms_crypto_key.cryptokey-1.id",
 												"data.google_kms_crypto_key.cryptokey-1",
 											],
+										},
+									},
+								],
+								"master_authorized_networks_config": [
+									{
+										"cidr_blocks": [
+											{
+												"cidr_block": {
+													"constant_value": "10.2.0.0/16",
+												},
+											},
+										],
+										"enabled": {
+											"constant_value": true,
 										},
 									},
 								],
@@ -290,9 +330,15 @@ raw = {
 								"encryption_config": [
 									{},
 								],
-								"maintenance_window":                [],
-								"master_authorized_networks_config": [],
-								"node_config":                       [],
+								"maintenance_window": [],
+								"master_authorized_networks_config": [
+									{
+										"cidr_blocks": [
+											{},
+										],
+									},
+								],
+								"node_config": [],
 								"private_environment_config": [
 									{},
 								],
@@ -316,7 +362,17 @@ raw = {
 										"kms_key_name": "projects/sublime-lyceum-343813/locations/us-central1/keyRings/keyring-1/cryptoKeys/cryptokey-1",
 									},
 								],
-								"master_authorized_networks_config": [],
+								"master_authorized_networks_config": [
+									{
+										"cidr_blocks": [
+											{
+												"cidr_block":   "10.2.0.0/16",
+												"display_name": "",
+											},
+										],
+										"enabled": true,
+									},
+								],
 								"private_environment_config": [
 									{
 										"enable_private_endpoint": true,
@@ -414,7 +470,17 @@ raw = {
 									"kms_key_name": "projects/sublime-lyceum-343813/locations/us-central1/keyRings/keyring-1/cryptoKeys/cryptokey-1",
 								},
 							],
-							"master_authorized_networks_config": [],
+							"master_authorized_networks_config": [
+								{
+									"cidr_blocks": [
+										{
+											"cidr_block":   "10.2.0.0/16",
+											"display_name": "",
+										},
+									],
+									"enabled": true,
+								},
+							],
 							"private_environment_config": [
 								{
 									"enable_private_endpoint": true,
@@ -444,9 +510,15 @@ raw = {
 							"encryption_config": [
 								{},
 							],
-							"maintenance_window":                [],
-							"master_authorized_networks_config": [],
-							"node_config":                       [],
+							"maintenance_window": [],
+							"master_authorized_networks_config": [
+								{
+									"cidr_blocks": [
+										{},
+									],
+								},
+							],
+							"node_config": [],
 							"private_environment_config": [
 								{},
 							],
@@ -470,12 +542,18 @@ raw = {
 							"encryption_config": [
 								{},
 							],
-							"environment_size":                  true,
-							"gke_cluster":                       true,
-							"maintenance_window":                true,
-							"master_authorized_networks_config": [],
-							"node_config":                       true,
-							"node_count":                        true,
+							"environment_size":   true,
+							"gke_cluster":        true,
+							"maintenance_window": true,
+							"master_authorized_networks_config": [
+								{
+									"cidr_blocks": [
+										{},
+									],
+								},
+							],
+							"node_config": true,
+							"node_count":  true,
 							"private_environment_config": [
 								{
 									"cloud_composer_connection_subnetwork":   true,

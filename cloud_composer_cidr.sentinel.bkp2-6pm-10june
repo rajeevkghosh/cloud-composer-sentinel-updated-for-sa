@@ -14,32 +14,40 @@ allComposerInstances = plan.find_resources("google_composer_environment")
 violations_master_auth = {}
 
 for allComposerInstances as address, rc {
-	
-	
 	composer_master_auth = plan.evaluate_attribute(rc.change.after, "config.0.master_authorized_networks_config")
     composer_cidr = plan.evaluate_attribute(rc.change.after, "config.0.master_authorized_networks_config.0.cidr_blocks")
-	
-	
 	print(composer_master_auth)
 	print(composer_cidr)
 	print(types.type_of(composer_cidr))
-    
-	//print(types.type_of (composer_master_auth[0]["cidr_blocks"][0]))
-	/*if (types.type_of(composer_master_auth[0]["cidr_blocks"][0]["cidr_block"] == "undefined")) {
+	print(composer_master_auth[0]["cidr_blocks"][0])
+	//cidr_block_undefined = rule { (types.type_of(composer_master_auth[0]["cidr_blocks"][0]["cidr_block"]) is "undefined") }
+   // print(cidr_block_undefined)
 
-		print ("lol")
+	/*if types.type_of (composer_master_auth[0]["cidr_blocks"][0]["cidr_block"]) is "undefined" {
+		violations_master_auth[address] = rc
+		print("3333")
 	}*/
-
+	
 	if composer_master_auth == null {
 		violations_master_auth[address] = rc
-		print("masterauth is null")
+		print("The value for private_environment_config in Resource " + address + " can't be null")
 
 	} else {
 		is_null_masterauth = rule { length(composer_master_auth) == 0 or length(composer_master_auth[0]["cidr_blocks"]) == 0 or types.type_of (composer_master_auth[0]["cidr_blocks"]) == "undefined"}
         print(is_null_masterauth)
 		if is_null_masterauth {
 			violations_master_auth[address] = rc
-			print("cidr_block_undefined")
+			print("The value for private_environment_config in Resource " + address + " can't be null")
+		}
+
+		if (types.type_of(composer_cidr) is "list") {
+         print("hi")
+	//	 print(composer_cidr[0]["cidr_block"])
+		 print(types.type_of (composer_cidr[0]))
+		 for composer_cidr[0] as ad, rt {
+			 print (ad)
+		 }
+
 		}
 	}
 }

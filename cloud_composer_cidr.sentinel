@@ -14,8 +14,7 @@ allComposerInstances = plan.find_resources("google_composer_environment")
 violations_master_auth = {}
 
 for allComposerInstances as address, rc {
-	
-	
+
 	composer_master_auth = plan.evaluate_attribute(rc.change.after, "config.0.master_authorized_networks_config")
 
 	composer_cidr = plan.evaluate_attribute(rc, "config.0.master_authorized_networks_config.0.cidr_blocks")
@@ -23,14 +22,16 @@ for allComposerInstances as address, rc {
 
 	if composer_master_auth == null {
 		violations_master_auth[address] = rc
-		print("masterauth is null for resource "+address)
+		print("masterauth is null for resource " + address)
 
 	} else {
-		is_null_masterauth = rule { length(composer_master_auth) == 0 or length(composer_master_auth[0]["cidr_blocks"]) == 0 or types.type_of (composer_master_auth[0]["cidr_blocks"]) == "undefined"}
-        print(is_null_masterauth)
+		is_null_masterauth = rule {
+			length(composer_master_auth) == 0 or length(composer_master_auth[0]["cidr_blocks"]) == 0 or types.type_of(composer_master_auth[0]["cidr_blocks"]) == "undefined"
+		}
+		print(is_null_masterauth)
 		if is_null_masterauth {
 			violations_master_auth[address] = rc
-			print("cidr_block_undefined for resource "+address)
+			print("cidr_block_undefined for resource " + address)
 		}
 	}
 }

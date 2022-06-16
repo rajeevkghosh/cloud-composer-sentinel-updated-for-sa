@@ -29,7 +29,7 @@ resource "google_composer_environment" "test" {
     node_config {
       network    = "default"
       subnetwork = "default"
-      service_account = google_service_account.test.name
+      //service_account = google_service_account.test.name
     }
 
     encryption_config {

@@ -1,0 +1,22 @@
+# Import common-functions/tfplan-functions/tfplan-functions.sentinel
+# with alias "plan"
+import "tfplan-functions" as plan
+import "tfconfig/v2" as tfconfig
+import "strings"
+import "types"
+
+# Get all Composer Instances
+type = "google_composer_environment"
+ resources = filter tfconfig.resources as address, rc {
+  	rc.type is type
+  }
+
+  //print (resources)
+
+messages = {}
+for resources as add, rc {
+
+      print (rc)
+  }
+
+  main = rule {true}

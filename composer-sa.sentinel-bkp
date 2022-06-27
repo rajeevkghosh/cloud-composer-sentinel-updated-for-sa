@@ -11,9 +11,8 @@ allComposerInstances = tfconfig.find_resources_by_type("google_composer_environm
 #print(allComposerInstances)
 messages = {}
 for allComposerInstances as address, rc {
- sa = rule {types.type_of(rc.config.config[0].node_config[0].service_account) is "undefined"}
- print(sa)
- if sa {
+ sa = (rc.config.config[0].node_config[0].service_account)
+ if sa == "undefined" {
      messages[address] = rc
      print("SA can't be null for resource ")
  }

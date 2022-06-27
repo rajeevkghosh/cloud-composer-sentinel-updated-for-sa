@@ -5,6 +5,12 @@
 			"source": "./tfplan-functions.sentinel",
 			"sourceSum": "",
 			"dest": "/home/rajeevghosh/WELLS-PHASE3/07June22-cloud-composer/cloud-composer-sentinel/tfplan-functions.sentinel"
+		},
+		{
+			"key": "tfconfig-functions",
+			"source": "./tfconfig-functions.sentinel",
+			"sourceSum": "",
+			"dest": "/home/rajeevghosh/WELLS-PHASE3/composer-sa/cloud-composer-sentinel-updated-for-sa/tfconfig-functions.sentinel"
 		}
 	]
 }
